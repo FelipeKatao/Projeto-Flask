@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}"> 
+    <title>Document</title>
+</head>
+<body>
+    <h1>Titulo</h1>
+
+    {% if context == 'compras' %}
+        <div>
+            <h2>Compras do usuario</h2>
+            {% for x in Carrinho %}
+              <div class="card">
+                <h2> {{ x.Item }} </h2>
+                <h3> {{ x.valor }}</h3>
+                {% if x.Parcelado != None %}
+                    <h4>Este produto sera parcelado em {{ x.Parcelado }} X</h4>
+                {% endif %}
+              </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if context == 'vendas' %}
+        <div>
+            <h2>Vendas</h2>
+        </div>
+    {% endif %}
+
+    {% if context == 'relatorio' %}
+        <div>
+            <h2>Relatorio</h2>
+        </div>
+    {% endif %}
+
+</body>
+</html>

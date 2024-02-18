@@ -1,0 +1,11 @@
+body{
+    background-color: aquamarine;
+}
+
+.card{
+    width: 10vh;
+    height: 10vh;
+    background-color: white;
+    padding: 3vh;
+    margin-top: 4vh;
+}
