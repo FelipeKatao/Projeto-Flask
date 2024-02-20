@@ -1,11 +1,58 @@
 body{
-    background-color: aquamarine;
+    background-color: #ebebeb;
 }
 
+
 .card{
-    width: 10vh;
-    height: 10vh;
+    width: 40vh;
+    height: 20vh;
     background-color: white;
     padding: 3vh;
     margin-top: 4vh;
+    border-radius: 0.7vh;
+    background-color: #ff6a6a;
+    color: white;
+    margin-left: 4vh;
+}
+
+
+/* Estilo CSS para a pagina */ 
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+.top_nav{
+    width: 103%;
+    height: 10vh;
+    background-color: #4e278d;
+    color: white;
+    font-weight: bold;
+    margin-top: -3vh;
+    margin-left: -2vh;
+}
+
+.top_nav h2{
+    position: absolute;
+    margin-top: 4vh;
+    margin-left: 5vh;
+}
+
+.flutuante{
+    width: 30vh;
+    height: 90vh;
+    background-color: #d3d3d3;
+}
+
+.body_erp{
+    display: flex;
+    flex-direction: row;
+}
+.dash{
+    padding: 4vh;
+}
+.compras_usuario{
+    display: flex;
+    flex-direction: row;
 }

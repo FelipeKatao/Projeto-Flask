@@ -6,14 +6,14 @@ app_site  = Flask(__name__)
 
 _Compras = Compras()
 
-@app_site.route("/usuario/<contexto>")
-def helloWorld(contexto):
-    if(contexto == "compras"):
+@app_site.route("/usuario/<contexto>") 
+def helloWorld(contexto): 
+    if(contexto == "compras"): 
         return render_template("index.html",context=str(contexto),Carrinho = _Compras.CarrinhoUsuario())
     if(contexto == "vendas"):
         return render_template("index.html",context=str(contexto),Carrinho = _Compras.CarrinhoUsuario(),QuanidadeVendas =0)
     return render_template("index.html",context=str(contexto))
- 
+  
 @app_site.post("/teste")
 def a():   
     valor = 0 

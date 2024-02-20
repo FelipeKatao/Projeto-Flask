@@ -7,13 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Titulo</h1>
+    <nav class="top_nav">
+        <h2> <spam>Super </spam>ERP</h2>
+    </nav>
+    <div class="body_erp">
+        <nav class="flutuante">
 
+        </nav>
+    <div class="dash">
     {% if context == 'compras' %}
-        <div>
-            <h2>Compras do usuario</h2>
+    <h2>Compras do usuario</h2>
+        <div class="compras_usuario">
+            
             {% for x in Carrinho %}
               <div class="card">
+                <head>Produto</head>
                 <h2> {{ x.Item }} </h2>
                 <h3> {{ x.valor }}</h3>
                 {% if x.Parcelado != None %}
@@ -35,6 +43,8 @@
             <h2>Relatorio</h2>
         </div>
     {% endif %}
+</div>
+</div>
 
 </body>
 </html>
