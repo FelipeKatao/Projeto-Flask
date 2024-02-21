@@ -12,7 +12,7 @@
     </nav>
     <div class="body_erp">
         <nav class="flutuante">
-
+            
         </nav>
     <div class="dash">
     {% if context == 'compras' %}
@@ -42,6 +42,25 @@
         <div>
             <h2>Relatorio</h2>
         </div>
+    {% endif %}
+
+    {% if cadastro == True %}
+        <h1>Cadastro de produtos</h1>
+        <form action="/cad/produto" method="post">
+            <label>Nome</label>
+            <input required="required" name="nome_produto" type="text">
+            <label>Preco</label>
+            <input required="required" name="preco_produto" type="number">
+            <input  required="required" name="Data_cad" type="date">
+            <button> Cadastrar produto </button>
+        </form>
+    {% endif %}
+
+    {% if status != None %}
+        {% for x in status %}
+            <h1>{{ x }}</h1>
+        {% endfor %}
+     
     {% endif %}
 </div>
 </div>
