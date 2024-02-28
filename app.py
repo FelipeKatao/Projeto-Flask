@@ -1,35 +1,29 @@
-from flask import Flask,request,render_template
-from servico.calculo import Calculo
-from servico.compras import Compras
+from datetime import timedelta
+from flask import Flask,request,render_template,session
+from servico.usuario_servico import UsuarioService
 
 app_site  = Flask(__name__)
+ServicoUsuario = UsuarioService()
+app_site.secret_key = 'chave-secreta'
+app_site.debug = True
+app_site.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=60)
 
-_Compras = Compras()
+l ="4"
+@app_site.route("/")
+def login():
+    if("usuario" not in session):
+        return render_template("paginaCliente.html")
+    return "Login já efetuado"
 
-@app_site.route("/usuario/<contexto>") 
-def helloWorld(contexto): 
-    if(contexto == "compras"): 
-        return render_template("index.html",context=str(contexto),Carrinho = _Compras.CarrinhoUsuario())
-    if(contexto == "vendas"):
-        return render_template("index.html",context=str(contexto),Carrinho = _Compras.CarrinhoUsuario(),QuanidadeVendas =0)
-    if(contexto == "cadastro"):
-        return render_template("index.html",context=str(contexto),cadastro = True)
-    return render_template("index.html",context=str(contexto))
-  
-@app_site.post("/cad/produto")
-def CadProduto():
-    Status_erro = []
-    if(len(request.form["nome_produto"]) <=10 ):
-        Status_erro.append(" O Nome tem menos de 10 caracteres \n")
+@app_site.post("/login")
+def verificar_login():
+    Login_status = ServicoUsuario.Login(request.form["login_id"],request.form["login_pass"])
+    if(Login_status == "OK"):
+        session["usuario"] = request.form["login_id"]
+        return "Login feito com sucesso"
+    return render_template("paginaCliente.html",status=Login_status)
 
-    if(int(request.form["preco_produto"]) < 0):
-            Status_erro.append(" O preço é menor que 0 ")
-
-    if( Status_erro != ""):
-        return render_template("index.html",status=Status_erro,cadastro = True)
-    else:
-        return render_template("index.html",status="Produto cadastrado com sucesso",cadastro = True)
+# Projeto termina aqui 
 
 if(__name__ == '__main__'):
-    app_site.debug = True 
-    app_site.run()  
+    app_site.run(port=5501,debug=True)    

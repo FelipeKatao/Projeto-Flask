@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}"> 
+    <title>Sistema </title>
+</head>
+<body id="app_start">
+    <div class="conteudo">
+        <h1>
+            Seja bem vindo, faça seu login para continuar.
+        </h1>
+        <form action="/login" method="post">
+            <div class="lg_">
+                <label>Usuario: </label>
+                <input required="required" type="text" name="login_id">
+            </div>
+            
+            <div class="lg_">
+            <label>Senha: </label>
+            <input required="required" type="password" name="login_pass">
+            </div>
+           <h3> {{ status }} </h3>   <br>
+            <button class="bt_login">Entrar</button>
+            
+        </form>
+    </div>
+    <footer></footer>
+</body>
+</html>
